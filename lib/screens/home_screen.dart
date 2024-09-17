@@ -4,8 +4,9 @@ import 'package:client_meeting_scheduler/models/meeting.dart';
 import 'package:client_meeting_scheduler/repo/client_repository.dart';
 import 'package:client_meeting_scheduler/repo/meeting_repository.dart';
 import 'package:client_meeting_scheduler/screens/calendar.dart';
-import 'package:client_meeting_scheduler/screens/map_view.dart';
-import 'package:client_meeting_scheduler/screens/meetings/add.dart';
+import 'package:client_meeting_scheduler/screens/forms/addClient.dart';
+import 'package:client_meeting_scheduler/screens/forms/createMeeting.dart';
+import 'package:client_meeting_scheduler/screens/maps/map_view.dart';
 import 'package:client_meeting_scheduler/services/location_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -241,40 +242,31 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(height: 20),
 
-                  // Recent Activity Section
-                  const Text(
-                    "Recent Activity",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.brown,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Column(
+                  // Client Directory Section with + Icon
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ListTile(
-                        leading: Icon(Icons.update, color: Colors.brown),
-                        title: Text("Rescheduled meeting with XYZ Co."),
-                        subtitle: Text("2 hours ago"),
+                      const Text(
+                        "Client Directory",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.brown,
+                        ),
                       ),
-                      ListTile(
-                        leading: Icon(Icons.update, color: Colors.brown),
-                        title: Text("New meeting with ABC Corp."),
-                        subtitle: Text("Yesterday"),
+                      IconButton(
+                        icon: Icon(Icons.add, color: Colors.brown),
+                        onPressed: () {
+                          // Navigate to Add Client screen
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AddClientForm(),
+                            ),
+                          );
+                        },
                       ),
                     ],
-                  ),
-                  const SizedBox(height: 20),
-
-                  // Client Directory Section
-                  const Text(
-                    "Client Directory",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.brown,
-                    ),
                   ),
                   const SizedBox(height: 10),
                   Column(

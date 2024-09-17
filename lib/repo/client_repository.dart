@@ -33,4 +33,37 @@ class ClientRepository {
       return null;
     }
   }
+
+  // Add a new client
+  Future<void> addClient(Client client) async {
+    try {
+      await _firestore.collection('clients').add(client.toFirestore());
+    } catch (e) {
+      // Handle errors
+      print('Error adding client: $e');
+    }
+  }
+
+  // Update an existing client
+  Future<void> updateClient(String id, Client updatedClient) async {
+    try {
+      await _firestore
+          .collection('clients')
+          .doc(id)
+          .update(updatedClient.toFirestore());
+    } catch (e) {
+      // Handle errors
+      print('Error updating client: $e');
+    }
+  }
+
+  // Delete a client by ID
+  Future<void> deleteClient(String id) async {
+    try {
+      await _firestore.collection('clients').doc(id).delete();
+    } catch (e) {
+      // Handle errors
+      print('Error deleting client: $e');
+    }
+  }
 }

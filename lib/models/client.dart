@@ -23,11 +23,12 @@ class Client {
     );
   }
 
-  Map<String, dynamic> toFirestore(Client client) {
+  // Convert Client object to Firestore-friendly format
+  Map<String, dynamic> toFirestore() {
     return {
-      'name': client.name,
-      'email': client.email,
-      'phone': client.phone,
+      'name': name,
+      'email': email,
+      'phone': phone,
     };
   }
 }

@@ -2,7 +2,7 @@ import 'package:client_meeting_scheduler/models/client.dart';
 import 'package:client_meeting_scheduler/models/meeting.dart';
 import 'package:client_meeting_scheduler/repo/client_repository.dart';
 import 'package:client_meeting_scheduler/repo/meeting_repository.dart';
-import 'package:client_meeting_scheduler/screens/select_location.dart';
+import 'package:client_meeting_scheduler/screens/maps/select_location.dart';
 import 'package:client_meeting_scheduler/services/location_provider.dart'; // Import LocationProvider
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
