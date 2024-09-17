@@ -4,9 +4,11 @@ import 'package:client_meeting_scheduler/models/meeting.dart';
 import 'package:client_meeting_scheduler/repo/client_repository.dart';
 import 'package:client_meeting_scheduler/repo/meeting_repository.dart';
 import 'package:client_meeting_scheduler/screens/map_view.dart';
+import 'package:client_meeting_scheduler/services/location_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart'; // Import provider
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -84,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(height: 10),
                   Container(
-                    height: 120,
+                    height: 150,
                     child: _meetings.isEmpty
                         ? Center(child: Text("No meetings for today"))
                         : ListView.builder(
@@ -121,7 +123,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                       Text(
                                           "Time: ${DateFormat('HH:mm').format(meeting.dateTime)}"),
                                       Text(
-                                          "Location: ${meeting.location.address}"),
+                                        "Location: ${meeting.location.address}",
+                                        maxLines: 2, // Limit to 2 lines
+                                        overflow: TextOverflow
+                                            .ellipsis, // Add ellipsis if it overflows
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -193,24 +199,35 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(height: 10),
                   Container(
-                    height: 300,
+                    height: 100,
                     color: Colors.grey[200],
-                    child: GoogleMap(
-                      initialCameraPosition: CameraPosition(
-                        target: LatLng(37.7749, -122.4194),
-                        zoom: 12,
-                      ),
-                      onMapCreated: (GoogleMapController controller) {
-                        // Additional map configuration can go here
-                      },
-                      onTap: (LatLng position) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MapView(
-                              meetings: _meetings,
-                            ),
+                    child: Consumer<LocationProvider>(
+                      builder: (context, locationProvider, child) {
+                        if (locationProvider.isLoading) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+
+                        return GoogleMap(
+                          initialCameraPosition: CameraPosition(
+                            target:
+                                locationProvider.currentLocation.coordinates,
+                            zoom: 12,
                           ),
+                          onMapCreated: (GoogleMapController controller) {
+                            // Additional map configuration can go here
+                          },
+                          onTap: (LatLng position) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MapView(
+                                  meetings: _meetings,
+                                ),
+                              ),
+                            );
+                          },
                         );
                       },
                     ),
