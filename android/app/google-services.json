@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "754072927999",
+    "project_id": "agendaconnect-8994f",
+    "storage_bucket": "agendaconnect-8994f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:754072927999:android:eeb58e0d03c010ef98d6ca",
+        "android_client_info": {
+          "package_name": "com.example.client_meeting_scheduler"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7F18fqvKoyK16SgFabbW7WWmVFtIWZj8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

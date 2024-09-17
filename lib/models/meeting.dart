@@ -1,12 +1,39 @@
-import 'package:client_meeting_scheduler/models/client.dart';
-import 'package:client_meeting_scheduler/models/location.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Meeting {
-  late Client client;
-  late Location location;
-  late DateTime dateTime;
-  late String details;
+  final String clientId;
+  final FirebaseLocation location;
+  final DateTime dateTime;
+  final String details;
 
-  Meeting(
-      {required this.client, required this.location, required this.dateTime});
+  Meeting({
+    required this.clientId,
+    required this.location,
+    required this.dateTime,
+    required this.details,
+  });
+
+  factory Meeting.fromFirestore(DocumentSnapshot doc) {
+    final data = doc.data() as Map<String, dynamic>;
+
+    return Meeting(
+      clientId: data['clientId'] as String,
+      location: FirebaseLocation(
+        latitude: (data['location']['latitude'] as num).toDouble(),
+        longitude: (data['location']['longitude'] as num).toDouble(),
+        address: data['location']['address'] ?? '',
+      ),
+      dateTime: (data['dateTime'] as Timestamp).toDate(),
+      details: data['details'] as String,
+    );
+  }
+}
+
+class FirebaseLocation {
+  final double latitude;
+  final double longitude;
+  final String address;
+
+  FirebaseLocation(
+      {required this.latitude, required this.longitude, required this.address});
 }

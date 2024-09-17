@@ -1,30 +1,33 @@
-import 'package:client_meeting_scheduler/models/location.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Client {
-  String name;
-  String email;
-  String phone;
-  Location address;
+  final String id;
+  final String name;
+  final String email;
+  final String phone;
 
   Client(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.email,
-      required this.phone,
-      required this.address});
+      required this.phone});
 
-  // factory Client.fromJson(Map<String, dynamic> json) {
-  //   return Client(
-  //     name: json['name'],
-  //     email: json['email'],
-  //     phone: json['phone'],
-  //     address: json['address'],
-  //   );
-  // }
+  static Client fromFirestore(DocumentSnapshot doc) {
+    final data = doc.data() as Map<String, dynamic>;
 
-  // Map<String, dynamic> toJson() => {
-  //       'name': name,
-  //       'email': email,
-  //       'phone': phone,
-  //       'address': address,
-  //     };
+    return Client(
+      id: doc.id,
+      name: data['name'] as String,
+      email: data['email'] as String,
+      phone: data['phone'] as String,
+    );
+  }
+
+  Map<String, dynamic> toFirestore(Client client) {
+    return {
+      'name': client.name,
+      'email': client.email,
+      'phone': client.phone,
+    };
+  }
 }
