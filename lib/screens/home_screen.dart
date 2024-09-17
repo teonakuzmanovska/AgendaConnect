@@ -3,6 +3,7 @@ import 'package:client_meeting_scheduler/models/client.dart';
 import 'package:client_meeting_scheduler/models/meeting.dart';
 import 'package:client_meeting_scheduler/repo/client_repository.dart';
 import 'package:client_meeting_scheduler/repo/meeting_repository.dart';
+import 'package:client_meeting_scheduler/screens/calendar.dart';
 import 'package:client_meeting_scheduler/screens/map_view.dart';
 import 'package:client_meeting_scheduler/screens/meetings/add.dart';
 import 'package:client_meeting_scheduler/services/location_provider.dart';
@@ -174,6 +175,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: ElevatedButton.icon(
                           onPressed: () {
                             // Navigate to Calendar screen
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MonthlyCalendarView(),
+                              ),
+                            );
                           },
                           icon: Icon(Icons.calendar_today),
                           label: const Text("View Calendar"),
