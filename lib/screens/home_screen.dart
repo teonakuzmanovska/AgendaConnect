@@ -4,6 +4,7 @@ import 'package:client_meeting_scheduler/models/meeting.dart';
 import 'package:client_meeting_scheduler/repo/client_repository.dart';
 import 'package:client_meeting_scheduler/repo/meeting_repository.dart';
 import 'package:client_meeting_scheduler/screens/map_view.dart';
+import 'package:client_meeting_scheduler/screens/meetings/add.dart';
 import 'package:client_meeting_scheduler/services/location_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -154,11 +155,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: ElevatedButton.icon(
                           onPressed: () {
                             // Navigate to CreateMeetingForm screen
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) =>
-                            //             const CreateMeetingForm()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CreateMeetingForm()));
                           },
                           icon: Icon(Icons.add),
                           label: const Text("New Meeting"),

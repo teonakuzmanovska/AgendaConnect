@@ -89,7 +89,7 @@ class LocationProvider with ChangeNotifier {
 
       currentLocation.coordinates =
           LatLng(position.latitude, position.longitude);
-      await _getAddressFromCoordinates(currentLocation);
+      await getAddressFromCoordinates(currentLocation);
 
       // Safely check if mapController is initialized
       if (mapController != null) {
@@ -106,7 +106,7 @@ class LocationProvider with ChangeNotifier {
     updatePickedLocationMarker(currentLocation);
   }
 
-  Future<void> _getAddressFromCoordinates(
+  Future<void> getAddressFromCoordinates(
       location_model.Location location) async {
     try {
       List<Placemark> placemarks = await placemarkFromCoordinates(
@@ -167,7 +167,7 @@ class LocationProvider with ChangeNotifier {
   void onMapTap(LatLng location) {
     selectedLocation.coordinates = location;
     selectedLocation.address = '';
-    _getAddressFromCoordinates(selectedLocation);
+    getAddressFromCoordinates(selectedLocation);
 
     if (mapController != null) {
       mapController!.animateCamera(

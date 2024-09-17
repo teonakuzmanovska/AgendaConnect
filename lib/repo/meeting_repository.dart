@@ -15,4 +15,13 @@ class MeetingRepository {
       return [];
     }
   }
+
+  Future<void> addMeeting(Meeting meeting) async {
+    try {
+      await _firestore.collection('meetings').add(meeting.toFirestore());
+      print('Meeting added successfully');
+    } catch (e) {
+      print('Failed to add meeting: $e');
+    }
+  }
 }

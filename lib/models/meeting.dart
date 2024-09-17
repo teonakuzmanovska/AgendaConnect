@@ -27,6 +27,19 @@ class Meeting {
       details: data['details'] as String,
     );
   }
+
+  Map<String, dynamic> toFirestore() {
+    return {
+      'clientId': clientId,
+      'location': {
+        'latitude': location.latitude,
+        'longitude': location.longitude,
+        'address': location.address,
+      },
+      'dateTime': dateTime,
+      'details': details,
+    };
+  }
 }
 
 class FirebaseLocation {
