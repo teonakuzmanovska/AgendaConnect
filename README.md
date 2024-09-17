@@ -8,9 +8,13 @@ This README file provides an overview of the project, instructions for setting u
 
 This project  allows users to create, manage, and store meetings with clients using Firebase Firestore. This project provides a streamlined way to manage client meetings, including scheduling, specifying meeting locations, and saving meeting details.
 
+##  Demo
+
+![alt text](Screen_Recording_20240917_201737-ezgif.com-video-to-gif-converter.gif)
+
 ## Features
 
-Firebase Integration: This app utilizes Firebase services for authentication and real-time database functionality. 
+Firebase Integration: This app utilizes Firebase services for authentication and real-time database functionality.
 
 To add Firebase to your Flutter project, run the following command:
 
