@@ -128,22 +128,25 @@ Set up authentication and Firestore rules in the Firebase Console to match your 
 ## Running the App
 
 Add the following dependencies in your `pubspec.yaml` file:
-```dependencies:
-firebase_core: ^latest_version
-firebase_auth: ^latest_version
-cloud_firestore: ^latest_version
-intl: ^latest_version
-table_calendar: ^latest_version
-google_maps_flutter: ^latest_version
-location: ^latest_version
-geocoding: ^latest_version
-geolocator: ^latest_version
-flutter_svg: ^latest_version
-provider: ^latest_version
-flutter_dotenv: ^latest_version
-envied: ^latest_version
-flutter_local_notifications: ^latest_version
-flutter_polyline_points: ^latest_version
+
+```
+cupertino_icons: ^1.0.6
+firebase_core: ^3.0.0
+firebase_auth: ^5.0.0
+intl: ^0.19.0
+calendar_view: ^1.0.4
+google_maps_flutter: ^2.6.1
+flutter_polyline_points: ^1.0.0
+location: ^6.0.2
+flutter_svg: 2.0.9
+envied: ^0.5.4+1
+flutter_dotenv: ^5.1.0
+geocoding: ^3.0.0
+geolocator: ^12.0.0
+provider: ^6.1.2
+flutter_local_notifications: ^17.2.2
+cloud_firestore: ^5.4.0
+table_calendar: ^3.1.2
 ```
 Once all dependencies are installed and Firebase is configured, run the app using the following command: 
 
