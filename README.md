@@ -78,7 +78,8 @@ Users can manage clients and meetings with add, edit, and delete functionality f
 
 The following demo demonstrates all features discussed above.
 
-![alt text](Screen_Recording_20240918_180558.gif)
+<img src="Screen_Recording_20240918_180558.gif" alt="Demo" width="auto" height="450">
+
 
 <br>
 
