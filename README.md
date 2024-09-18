@@ -1,122 +1,155 @@
-# Client meeting scheduling system AgendaConnect
+# Client meeting scheduling system - AgendaConnect
 
-Flutter-based client meeting scheduler system aimed to synchronize all meetings in one place and ehance a professional's organization.
-
-This README file provides an overview of the project, instructions for setting up Firebase, and a brief description of the app's features.
+Flutter-based client meeting scheduler aimed at synchronizing all meetings in one place to enhance professional organization. This README provides an overview of the project, Firebase setup instructions, and a description of the app's features.<br><br>
 
 ##  Project Description
 
-This project  allows users to create, manage, and store meetings with clients using Firebase Firestore. This project provides a streamlined way to manage client meetings, including scheduling, specifying meeting locations, and saving meeting details.
-
-##  Demo
-
-![alt text](Screen_Recording_20240917_201737-ezgif.com-video-to-gif-converter.gif)
+AgendaConnect is a Flutter-based app designed to manage client meetings efficiently. Users can create, manage, and store meetings using Firebase Firestore. The app supports scheduling, specifying meeting locations, saving client details, and integrating various location-based features.<br><br>
 
 ## Features
 
-Firebase Integration: This app utilizes Firebase services for authentication and real-time database functionality.
+### Firebase Integration
+The app uses Firebase services for authentication and real-time database functionality. To integrate Firebase into your Flutter project:
 
-To add Firebase to your Flutter project, run the following command:
+Add Firebase core to your project by running the following command:
 
     flutter pub add firebase_core
 
 Additional Firebase plugins used:
 
-    firebase_auth for user authentication.
+- `firebase_auth` for user authentication.
 
-    cloud_firestore for real-time database.
+- `cloud_firestore` for real-time database.
 
-## Custom UI Elements: 
+<br>
 
-The app features custom UI elements, such as a Group Card widget Location map preview, to provide a unique and engaging user experience.
+### Meeting Management<br>
+**Client Repository** : Fetches and manages client data from Firestore.<br>
 
-Mobile Design Patterns: "AgendaConnect" incorporates six effective mobile design patterns, enhancing the overall user interface and experience:
+**Meeting Repository** : Handles meeting details like client, location, and date-time.
+Create Meeting Form: Allows users to add meetings, select clients, and set locations via a map.<br><br>
 
-### Tab Bar:
+### Custom UI Elements<br>
+AgendaConnect incorporates several custom UI elements for a clean and functional user interface:
 
-Organize content using a tab-based navigation system.
+**Group Card Widget** : Displays client and meeting information in a visually engaging format.<br><br>
+**Location Map Preview** : Provides an interactive map overview for each meeting.<br><br>
 
-### List View:
+### Mobile Design Patterns<br>
+AgendaConnect integrates effective mobile design patterns for enhanced user experience:
 
-Display group lists efficiently.
+**Tab Bar Navigation** : Organizes content into tabs for easy access.<br>
 
-### Cards:
+**List View** : Displays client and meeting details efficiently.<br>
 
-Utilize card-based UI elements for a modern look.
+**Cards** : Uses card-based UI elements to display upcoming meetings, quick actions, and more.
 
-### Splash Screen:
+**Splash Screen** : Displays a splash screen with a custom logo for brand consistency.<br>
 
-Create an attractive and informative splash screen.
+**Floating Action Button (FAB)** : Provides quick access to adding meetings and clients.<br>
 
-### Floating Action Button (FAB):
+**State Persistence** : Saves and restores user data like location and meeting details, ensuring a seamless experience across app restarts.<br>
+<br>
+>More on these patterns: [Mobile Desing Paterns](https://www.designrush.com/best-designs/apps/trends/mobile-design-patterns)
 
-Implement FAB for quick actions.
+<br>
 
-### State Persistence: 
+### Location Features<br>
+**Location Sensors** : Accesses the user's current location to suggest nearby locations for meetings or to help navigate to the meeting location.<br>
 
-The app remembers the state of location and user details providing a seamless experience even after app restarts.
+**Geocoding and Geolocation** : Converts location data between coordinates and addresses.<br>
 
-Reference: [Mobile Desing Paterns](https://www.designrush.com/best-designs/apps/trends/mobile-design-patterns)
+**Google Maps Integration**: Displays meeting locations on a map and allows users to select locations via the map interface.<br><br>
 
-##  Mobile Sensors:
+### Calendar Integration
+AgendaConnect incorporates a weekly calendar view (via `table_calendar`) to display scheduled meetings, making it easy for users to manage their time. Meetings are color-coded and can be refreshed using pull-to-refresh or automatic refresh.<br><br>
 
-### Location Sensor: 
+### CRUD Features
+Users can manage clients and meetings with add, edit, and delete functionality for easy updates and corrections. Under refinement.<br><br>
 
-Access the user's and clients location for location-based features.
+### Mobile Sensors
+**Gyroscope**: The app responds to changes in device orientation, switching between landscape and portrait modes as needed.
 
-### Gyroscope Sensor: 
+**Location**: Tracks both user and client locations, enhancing location-based functionality for scheduling.
 
-Utilize the gyroscope sensor to detect device orientation (landscape or portrait mode).
+<br>
 
+##  Demo
+
+The following demo demonstrates all features discussed above.
+
+![alt text](Screen_Recording_20240918_180558.gif)
+
+<br>
 
 ##  Getting Started
 
-To get started with this project, follow these steps:
+### Prerequisites
+To get started with this project, ensure you have:
 
-Clone the repository:
+- Flutter installed.
 
-    git clone https://github.com/teonakuzmanovska/AgendaConnect.git //https
+- A Firebase account to configure Firebase services.
 
-    git clone git@github.com:teonakuzmanovska/AgendaConnect.git //ssh
 
-##  Set up Firebase:
+### Clone the repository
 
-Create a Firebase project on the Firebase Console.
+https: `git clone https://github.com/teonakuzmanovska/AgendaConnect.git`
 
-Add your Firebase configuration to the google-services.json file (for Android) and GoogleService-Info.plist file (for iOS) as per Firebase documentation.
+ssh: `git clone git@github.com:teonakuzmanovska/AgendaConnect.git`
+<br><br>
 
-Install the Firebase plugins by running the following commands:
+##  Set up Firebase
+### Steps:
+1. Create a Firebase project on the Firebase Console.
+2. Add the necessary Firebase configuration files:
 
-    flutter pub get
+    `google-services.json` (for Android)
 
-Configure Firebase authentication and database services according to your project requirements.
+3. Run the following command to install dependencies:
 
-##  Install Flutter:
+    `flutter pub get`
 
-If you haven't already, [install Flutter]( https://docs.flutter.dev/get-started/install ).
+### Configure Firebase Authentication
+Set up authentication and Firestore rules in the Firebase Console to match your app's requirements. Ensure Firebase is correctly configured for user authentication and meeting data management.
+<br><br>
 
-Run the app:
+## Connecting a device or emulator
+**Connecting physical device (recommended)**: Enable developer options on your android device. Then enable USB debbuging
 
-    flutter run
+**Connecting emulator**: To start an emulator, open Android Studio, go to AVD Manager, and launch an emulator of your choice.
 
-Dependencies
+>You can switch between devices with
+`Ctrl + Shift + P -> Flutter: Select Device`
 
-The app relies on several Flutter packages to enhance its functionality and user interface:
+<br>
 
-    1. firebase_core
-    2. firebase_auth
-    3. cloud_firestore
+## Running the App
 
-Make sure to include these packages in your pubspec.yaml file.
+Add the following dependencies in your `pubspec.yaml` file:
+```dependencies:
+firebase_core: ^latest_version
+firebase_auth: ^latest_version
+cloud_firestore: ^latest_version
+intl: ^latest_version
+table_calendar: ^latest_version
+google_maps_flutter: ^latest_version
+location: ^latest_version
+geocoding: ^latest_version
+geolocator: ^latest_version
+flutter_svg: ^latest_version
+provider: ^latest_version
+flutter_dotenv: ^latest_version
+envied: ^latest_version
+flutter_local_notifications: ^latest_version
+flutter_polyline_points: ^latest_version
+```
+Once all dependencies are installed and Firebase is configured, run the app using the following command: 
 
-##  Contribution
+`flutter run`
 
-Contributions to this project are welcome. Feel free to open issues or pull requests to suggest improvements or report bugs.
+<br>
 
 ##  License
 
 This project is licensed under the MIT License.
-
-Thank you for choosing "AgendaConnect". We hope this application serves as a valuable resource for your chat application development needs. If you have any questions or need further assistance, please don't hesitate to reach out.
-
-Happy coding!
