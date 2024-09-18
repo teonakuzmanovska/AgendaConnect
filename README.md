@@ -148,9 +148,3 @@ flutter_polyline_points: ^latest_version
 Once all dependencies are installed and Firebase is configured, run the app using the following command: 
 
 `flutter run`
-
-<br>
-
-##  License
-
-This project is licensed under the MIT License.
